@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>3D-printing Calculator</title>
+        <link rel="stylesheet" href="styles.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+        <header class="header">
+            <a href="index.html">PrintWorth</a>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="calculator.html">Calculate now.</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="container">
+            <h1>Calculate your 3D-printing prices in just a few clicks</h1>
+            <p>Simply fill the empty spaces with the needed values. To get an optimal result, please be as accurate as possible. Thank you!</p>
+            <div class="calculator-layout">
+                <form id="calculator-form" >
+                    <div class="input-group">
+                        <h2>Material</h2>
+
+                        <label for="filament-used">Filament used (g)</label>
+                        <input id="filament-used" type="number" min="0.01" step="0.01" required>
+                
+                        <label for="spool-price">Spool price (€)</label>
+                        <input id="spool-price" type="number" step="0.01">
+
+                        <label for="spool-weight">Spool weight (g)</label>
+                        <input id="spool-weight" type="number" min="0.01" step="0.01" required>
+                    </div>
+
+                    <div class="input-group">
+                        <h2>Printing</h2>
+
+                        <label for="print-time-hours">Print time (hours)</label>
+                        <input id="print-time-hours" type="number" min="0" step="1">
+
+                        <label for="print-time-minutes">Print time (minutes)</label>
+                        <input id="print-time-minutes" type="number" min="0" max="59" step="1">
+
+                        <label for="printer-power">Printer power consumption (W)</label>
+                        <input id="printer-power" type="number">
+
+                        <label for="electricity-price">Electricity price (€/kWh)</label>
+                        <input id="electricity-price" type="number" step="0.01">
+                    </div>
+
+                    <div class="input-group">
+                        <h2>Machine</h2>
+
+                        <label for="printer-purchase-price">Printer purchase price (€)</label>
+                        <input id="printer-purchase-price" type="number" step="0.01">
+
+                        <label for="expected-printer-lifetime">Expected printing hours (h)</label>
+                        <input id="expected-printer-lifetime" type="number" min="0.01" step="0.01" required>
+                    </div>
+
+                    <div class="input-group">
+                        <h2>Labor</h2>
+
+                        <label for="preparation-time-minutes">Preparation time (minutes)</label>
+                        <input id="preparation-time-minutes" type="number">
+                    
+                        <label for="post-processing-time-minutes">Post-processing time (minutes)</label>
+                        <input id="post-processing-time-minutes" type="number">
+
+                        <label for="labor-rate">Labor rate (€/h)</label>
+                        <input id="labor-rate" type="number" step="0.01">
+                    </div>
+
+                    <div class="input-group">
+                        <h2>Business</h2>
+
+                        <label for="other-costs">Other costs (€)</label>
+                        <input id="other-costs" type="number" step="0.01">
+
+                        <label for="failure-allowance">Failure allowance (%)</label>
+                        <input id="failure-allowance" type="number" min="0" max="100" step="0.01">
+
+                        <label for="payment-fee">Payment fee (%)</label>
+                        <input id="payment-fee" type="number" min="0" max="100" step="0.01">
+
+                        <label for="profit-margin">Desired profit margin (%)</label>
+                        <input id="profit-margin" type="number" min="0" max="100" step="0.01">
+                    </div>
+
+                    <button id="calculate-button" type="submit">Calculate</button>
+                </form>
+                <section class="results">
+                    <h2>Results:</h2>
+                    <p class="result-row">
+                        <span>Material cost:</span>
+                        <span><span id="total-material-cost">0.00</span>€</span>
+                    </p>
+                    <p class="result-row">
+                        <span>Electricity cost:</span>
+                        <span><span id="total-electricity-cost">0.00</span>€</span>
+                    </p>
+                    <p class="result-row">
+                        <span>Expected printer wear cost:</span>
+                        <span><span id="printer-wear">0.00</span>€</span>
+                    </p>
+                    <p class="result-row">
+                        <span>Labor cost:</span>
+                        <span><span id="total-labor-cost">0.00</span>€</span>
+                    </p>
+                    <p class="result-row">
+                        <span>Base cost:</span>
+                        <span><span id="base-cost">0.00</span>€</span>
+                    </p>
+                    <p class="result-row">
+                        <span>Failure reserve per print:</span>
+                        <span><span id="failure-reserve">0.00</span>€</span>
+                    </p>
+                    <p class="important-result result-row">
+                        <span>True product cost:</span>
+                        <span><span id="true-cost">0.00</span>€</span>
+                    </p>
+                    <p class="main-result result-row">
+                        <span>Recommended selling price:</span>
+                        <span><span id="selling-price">0.00</span>€</span>
+                    </p>
+                </section>
+            </div>
+            <section class="profitability">
+                <h2>Check your planned pricing</h2>
+                <p>Enter your planned price and we'll calculate the profitability for you.</p>
+                <div class="profitability-content">
+                    <form id="profitability-form">
+                        <div class="profitability-input">
+                            <label for="planned-price">Planned price (€)</label>
+                            <input id="planned-price" type="number" min="0.01" step="0.01" required>
+                        </div>
+
+                        <button id="check-profitability-button" type="submit" disabled>Check profitability</button>
+                    </form>
+                    <p class="result-row">
+                        <span>Actual profit:</span>
+                        <span><span id="actual-profit">0.00</span>€</span>
+                    </p>
+                    <p class="result-row">
+                        <span>Actual margin:</span>
+                        <span><span id="actual-margin">0.00</span>%</span>
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="calculator.html">Calculate</a>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+        
+        <script src="script.js"></script>
+    </body>
+</html>
