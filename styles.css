@@ -390,10 +390,7 @@ footer a:hover,
 }
 
 @media (max-width: 500px) {
-    .header {
-        flex-direction: column;
-        gap: 10px;
-    }
+    
 
     footer ul {
         flex-direction: column;
