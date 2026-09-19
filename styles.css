@@ -180,6 +180,22 @@ button:disabled {
 .negative-result {
     color: red;
 }
+
+
+/* CTA */
+.feedback-cta {
+    margin-top: 50px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-top: 3px solid var(--secondary-color);
+}
+
+#tally-link {
+    font-size: 1.125rem;
+    color: var(--primary-color);
+}
+
+
 /* Responsive Styles */
 @media (max-width: 950px) {
     .calculator-layout {
